@@ -154,6 +154,7 @@ class Form1(Form1Template):
       self.pokemon_type_2.background = self.type_colors[val]      
       self.pokemon_type_2.align = "center"      
       self.pokemon_type_1.font = "Consolas"
+      self.pokemon_type_2.enabled = False
 
   def simulate_button_click(self, **event_args):
     """This method is called when the button is clicked"""
