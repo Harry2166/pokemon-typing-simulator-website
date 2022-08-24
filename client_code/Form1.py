@@ -198,11 +198,11 @@ class Form1(Form1Template):
       self.label_types.enabled=False
       
 
-    self.add_component((self.label_types))
-    self.add_component((self.label_strengths))    
-    #self.label_strengths.remove_from_parent()
-    self.add_component((self.label_weaknesses))    
-    #self.label_weaknesses.remove_from_parent()
+      self.add_component((self.label_types))
+      self.add_component((self.label_strengths))
+      #self.label_strengths.remove_from_parent()
+      self.add_component((self.label_weaknesses))    
+      #self.label_weaknesses.remove_from_parent()
 
 
     self.pokemon_type_1.text = ""
