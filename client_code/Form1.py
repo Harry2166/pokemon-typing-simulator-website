@@ -140,9 +140,17 @@ class Form1(Form1Template):
                                  font_size=25)
     self.label_types = Label(text="Type(s) Selected: ", foreground="black", font="Consolas", align="left",
                                  font_size=25)
+    self.lower_card = ColumnPanel(background="#f44336", col_spacing="medium", wrap_on="mobile", role="card", 
+                                  visible=True, spacing_above="none", spacing_below="none")
+    self.name = Label(text="Made by Harry2166", align="left", font_size=10, italic=True, underline=True,
+                     foreground="white", spacing_above = "none", spacing_below="none")
+    
     self.add_component((self.label_types))
     self.add_component((self.label_strengths))    
     self.add_component((self.label_weaknesses))
+    self.add_component(self.lower_card)
+    self.lower_card.add_component(self.name)
+    
     
   def click(self, **event_args):
     
@@ -164,17 +172,16 @@ class Form1(Form1Template):
       self.pokemon_type_2.font = "Consolas"
       self.pokemon_type_2.enabled = False
 
-  def simulate_button_click(self, **event_args):
+  def simulate_click(self, **event_args):
     """This method is called when the button is clicked"""
 
     if self.pokemon_type_2.text == self.pokemon_type_1.text:
       alert("Please have two separate typings.")
     else:
-#       print(self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text))
-#       print(self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text))
       self.label_strengths.remove_from_parent()
       self.label_weaknesses.remove_from_parent()
       self.label_types.remove_from_parent()
+      self.lower_card.remove_from_parent()
       
       self.label_strengths.text=self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text)
       self.label_strengths.foreground="black"
@@ -203,6 +210,7 @@ class Form1(Form1Template):
       #self.label_strengths.remove_from_parent()
       self.add_component((self.label_weaknesses))    
       #self.label_weaknesses.remove_from_parent()
+      self.add_component(self.lower_card)
 
 
     self.pokemon_type_1.text = ""
@@ -267,6 +275,10 @@ class Form1(Form1Template):
                 resistance_immunities.append(typing)
 
         return f"Weaknesses: {', '.join(list((set(overall_weakness)) - set(resistance_immunities)))}"
+
+
+
+
 
 
 
