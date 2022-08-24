@@ -3,9 +3,7 @@ from anvil import *
 
 class Form1(Form1Template):
   def __init__(self, **properties):
-    # Set Form properties and Data Bindings.
-    self.label_strengths = Label(text="")    
-    self.label_weaknesses = Label(text="")
+    # Set Form properties and Data Bindings.    
     self.init_components(**properties)
     types = ['Bug', 'Dark', 'Dragon',
         'Electric', 'Fairy', 'Fighting',
@@ -136,6 +134,16 @@ class Form1(Form1Template):
       gp.add_component(self.btn[typing], row=row, col_xs=3,width_xs=1)
     self.add_component(gp)
     
+    self.label_strengths = Label(text="Strengths: ", foreground="black", font="Consolas", align="left",
+                                 font_size=25)    
+    self.label_weaknesses = Label(text="Weaknesses: ", foreground="black", font="Consolas", align="left",
+                                 font_size=25)
+    self.label_types = Label(text="Type(s) Selected: ", foreground="black", font="Consolas", align="left",
+                                 font_size=25)
+    self.add_component((self.label_types))
+    self.add_component((self.label_strengths))    
+    self.add_component((self.label_weaknesses))
+    
   def click(self, **event_args):
     
     val = event_args['sender'].tag.name
@@ -153,7 +161,7 @@ class Form1(Form1Template):
       self.pokemon_type_2.foreground = "white"
       self.pokemon_type_2.background = self.type_colors[val]      
       self.pokemon_type_2.align = "center"      
-      self.pokemon_type_1.font = "Consolas"
+      self.pokemon_type_2.font = "Consolas"
       self.pokemon_type_2.enabled = False
 
   def simulate_button_click(self, **event_args):
@@ -166,21 +174,31 @@ class Form1(Form1Template):
 #       print(self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text))
       self.label_strengths.remove_from_parent()
       self.label_weaknesses.remove_from_parent()
+      self.label_types.remove_from_parent()
+      
       self.label_strengths.text=self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text)
       self.label_strengths.foreground="black"
       self.label_strengths.font="Consolas"
-      self.label_strengths.align="center"
+      self.label_strengths.align="left"
       self.label_strengths.font_size=25
       self.label_strengths.enabled=False
       
       self.label_weaknesses.text=self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text)
       self.label_weaknesses.foreground="black"
       self.label_weaknesses.font="Consolas"
-      self.label_weaknesses.align="center"
+      self.label_weaknesses.align="left"
       self.label_weaknesses.font_size=25
       self.label_weaknesses.enabled=False
       
-    
+      self.label_types.text=f"Type(s) Selected: {self.pokemon_type_1.text}, {self.pokemon_type_2.text}"
+      self.label_types.foreground="black"
+      self.label_types.font="Consolas"
+      self.label_types.align="left"
+      self.label_types.font_size=25
+      self.label_types.enabled=False
+      
+
+    self.add_component((self.label_types))
     self.add_component((self.label_strengths))    
     #self.label_strengths.remove_from_parent()
     self.add_component((self.label_weaknesses))    

@@ -1,21 +1,30 @@
 container:
   type: ColumnPanel
-  properties: {col_widths: '{}'}
+  properties: {role: null, tooltip: '', border: solid, foreground: 'theme:Accent 2',
+    visible: true, wrap_on: mobile, col_spacing: large, spacing_above: small, col_widths: '{}',
+    spacing_below: small, background: 'theme:Header Background'}
 components:
-- type: Label
-  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: 'made by: Harry2166', font_size: 10, font: '', spacing_above: none, icon_align: left,
-    spacing_below: none, italic: true, background: '', bold: true, underline: true,
-    icon: ''}
-  name: name
-  layout_properties: {grid_position: 'JFDTEM,ZIICTJ'}
-- type: Label
-  properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
-    visible: true, text: Pokemon Typings Simulator, font_size: 30, font: '', spacing_above: small,
-    icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-    underline: false, icon: ''}
-  name: label_1
-  layout_properties: {grid_position: 'YTELJU,MHJEHM'}
+- type: ColumnPanel
+  properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{}',
+    spacing_below: none, background: 'theme:Accent 1'}
+  name: card_1
+  layout_properties: {grid_position: 'DDTDGP,ZNSCPS'}
+  components:
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: 'theme:Header
+        Background', visible: true, text: made by Harry2166, font_size: 10, font: '',
+      spacing_above: none, icon_align: left, spacing_below: none, italic: true, background: '',
+      bold: false, underline: true, icon: ''}
+    name: label_2
+    layout_properties: {grid_position: 'BLYPXZ,TDRXPW'}
+  - type: Label
+    properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Header
+        Background', visible: true, text: Pokemon Typings Simulator, font_size: 30,
+      font: '', spacing_above: none, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'YBTMNI,QOPTRH'}
 - type: Button
   properties: {role: null, align: center, tooltip: '', border: '', enabled: true,
     foreground: '', visible: true, text: SIMULATE, font_size: null, font: '30', spacing_above: small,
@@ -25,16 +34,16 @@ components:
   layout_properties: {grid_position: 'MHBSNS,WEEGRP', full_width_row: false, row_background: ''}
   event_bindings: {click: simulate_button_click}
 - type: TextBox
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: 'Enter
+  properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: 'Enter
       Pokemon Type:', border: '', enabled: false, foreground: '', visible: true, text: '',
-    font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+    font_size: null, font: Consolas, spacing_above: small, type: text, spacing_below: small,
     italic: false, background: '', bold: false, underline: false}
   name: pokemon_type_1
   layout_properties: {grid_position: 'SDLBYQ,YPCENN'}
 - type: TextBox
-  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: 'Enter
+  properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: 'Enter
       Pokemon Type:', border: '', enabled: false, foreground: '', visible: true, text: '',
-    font_size: null, font: '', spacing_above: small, type: text, spacing_below: small,
+    font_size: null, font: Consolas, spacing_above: small, type: text, spacing_below: small,
     italic: false, background: '', bold: false, underline: false}
   name: pokemon_type_2
   layout_properties: {grid_position: 'SDLBYQ,FGBXJI'}
