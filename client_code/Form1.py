@@ -4,6 +4,8 @@ from anvil import *
 class Form1(Form1Template):
   def __init__(self, **properties):
     # Set Form properties and Data Bindings.
+    self.label_strengths = Label(text="")    
+    self.label_weaknesses = Label(text="")
     self.init_components(**properties)
     types = ['Bug', 'Dark', 'Dragon',
         'Electric', 'Fairy', 'Fighting',
@@ -155,23 +157,34 @@ class Form1(Form1Template):
 
   def simulate_button_click(self, **event_args):
     """This method is called when the button is clicked"""
+
     if self.pokemon_type_2.text == self.pokemon_type_1.text:
       alert("Please have two separate typings.")
     else:
 #       print(self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text))
 #       print(self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text))
-      label_strengths = Label(text=self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text),
-                              foreground="black",
-                              font="Consolas",
-                              align="center",
-                              font_size=25)
-      label_weaknesses = Label(text=self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text),
-                              foreground="black",
-                              font="Consolas",
-                              align="center",
-                              font_size=25)
-      self.add_component((label_strengths))
-      self.add_component((label_weaknesses))
+      self.label_strengths.remove_from_parent()
+      self.label_weaknesses.remove_from_parent()
+      self.label_strengths.text=self.show_strengths(self.pokemon_type_1.text, self.pokemon_type_2.text)
+      self.label_strengths.foreground="black"
+      self.label_strengths.font="Consolas"
+      self.label_strengths.align="center"
+      self.label_strengths.font_size=25
+      self.label_strengths.enabled=False
+      
+      self.label_weaknesses.text=self.show_weaknesses(self.pokemon_type_1.text, self.pokemon_type_2.text)
+      self.label_weaknesses.foreground="black"
+      self.label_weaknesses.font="Consolas"
+      self.label_weaknesses.align="center"
+      self.label_weaknesses.font_size=25
+      self.label_weaknesses.enabled=False
+      
+    
+    self.add_component((self.label_strengths))    
+    #self.label_strengths.remove_from_parent()
+    self.add_component((self.label_weaknesses))    
+    #self.label_weaknesses.remove_from_parent()
+
 
     self.pokemon_type_1.text = ""
     self.pokemon_type_2.text = ""
@@ -184,7 +197,7 @@ class Form1(Form1Template):
       if not second_type:
         monotype = first_type
         monotype_strengths = self.strength.get(monotype)
-        print(f"Strengths: {', '.join(list(monotype_strengths))}")
+        return f"Strengths: {', '.join(list(monotype_strengths))}"
       else:
         overall_strength = []
         
@@ -206,7 +219,7 @@ class Form1(Form1Template):
       if not second_type:
         monotype = first_type
         monotype_weaknesses = self.weakness.get(monotype)
-        print(f"Weaknesses: {', '.join(list(monotype_weaknesses))}")
+        return f"Weaknesses: {', '.join(list(monotype_weaknesses))}"
       else:
         overall_weakness = []
         resistance_immunities = []
