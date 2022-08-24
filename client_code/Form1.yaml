@@ -32,11 +32,11 @@ components:
     font: Consolas, spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: pokemon_type_1
-  layout_properties: {grid_position: 'SDLBYQ,YPCENN'}
+  layout_properties: {grid_position: 'SDLBYQ,YPCENN', full_width_row: false}
 - type: TextBox
   properties: {role: null, align: center, hide_text: false, tooltip: '', placeholder: Pokemon Type,
     border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
     font: Consolas, spacing_above: small, type: text, spacing_below: small, italic: false,
     background: '', bold: false, underline: false}
   name: pokemon_type_2
-  layout_properties: {grid_position: 'SDLBYQ,FGBXJI'}
+  layout_properties: {grid_position: 'SDLBYQ,FGBXJI', full_width_row: false}

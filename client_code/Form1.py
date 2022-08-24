@@ -140,16 +140,17 @@ class Form1(Form1Template):
                                  font_size=25)
     self.label_types = Label(text="Type(s) Selected: ", foreground="black", font="Consolas", align="left",
                                  font_size=25)
-    self.lower_card = ColumnPanel(background="#f44336", col_spacing="medium", wrap_on="mobile", role="card", 
+    self.lower_card = ColumnPanel(background="#f44336", col_spacing="medium", wrap_on="tablet", role="card", 
                                   visible=True, spacing_above="none", spacing_below="none")
-    self.name = Label(text="Made by Harry2166", align="left", font_size=10, italic=True, underline=True,
+    self.name = Link(text="Made by Harry2166", url="https://github.com/Harry2166", align="center", 
+                     font_size=12, italic=True, underline=True,
                      foreground="white", spacing_above = "none", spacing_below="none")
     
     self.add_component((self.label_types))
     self.add_component((self.label_strengths))    
     self.add_component((self.label_weaknesses))
     self.add_component(self.lower_card)
-    self.lower_card.add_component(self.name)
+    self.lower_card.add_component(self.name, y=10)
     
     
   def click(self, **event_args):
