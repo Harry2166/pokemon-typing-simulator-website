@@ -1,8 +1,10 @@
+services: []
+package_name: pokemon_typing_simulator
 allow_embedding: false
-package_name: Classic_1
-db_schema: {}
-name: Classic 1
-startup_form: Form1
+name: pokemon_typing_simulator
 runtime_options: {version: 2, client_version: '3', server_version: python3-sandbox,
   server_spec: null}
-services: []
+metadata: {}
+startup_form: Form1
+db_schema: {}
+renamed: true
