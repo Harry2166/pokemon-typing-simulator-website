@@ -1,4 +1,7 @@
-services: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {}
 package_name: pokemon_typing_simulator
 allow_embedding: false
 name: pokemon_typing_simulator
