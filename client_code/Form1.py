@@ -145,10 +145,16 @@ class Form1(Form1Template):
     self.name = Link(text="Made by Harry2166", url="https://github.com/Harry2166", align="center", 
                      font_size=12, italic=True, underline=True,
                      foreground="white", spacing_above = "none", spacing_below="none")
+    self.label_resistances = Label(text="Resistances: ", foreground="black", font="Consolas", align="left",
+                                 font_size=25)
+    self.label_immunities = Label(text="Immunities: ", foreground="black", font="Consolas", align="left",
+                                 font_size=25)   
     
     self.add_component((self.label_types))
     self.add_component((self.label_strengths))    
     self.add_component((self.label_weaknesses))
+    self.add_component((self.label_resistances))
+    self.add_component((self.label_immunities))
     self.add_component(self.lower_card)
     self.lower_card.add_component(self.name, y=10)
     
@@ -181,6 +187,8 @@ class Form1(Form1Template):
     else:
       self.label_strengths.remove_from_parent()
       self.label_weaknesses.remove_from_parent()
+      self.label_immunities.remove_from_parent()
+      self.label_resistances.remove_from_parent()
       self.label_types.remove_from_parent()
       self.lower_card.remove_from_parent()
       
@@ -197,6 +205,20 @@ class Form1(Form1Template):
       self.label_weaknesses.align="left"
       self.label_weaknesses.font_size=25
       self.label_weaknesses.enabled=False
+
+      self.label_resistances.text=self.show_resistances(self.pokemon_type_1.text, self.pokemon_type_2.text)
+      self.label_resistances.foreground="black"
+      self.label_resistances.font="Consolas"
+      self.label_resistances.align="left"
+      self.label_resistances.font_size=25
+      self.label_resistances.enabled=False
+
+      self.label_immunities.text=self.show_immunities(self.pokemon_type_1.text, self.pokemon_type_2.text)
+      self.label_immunities.foreground="black"
+      self.label_immunities.font="Consolas"
+      self.label_immunities.align="left"
+      self.label_immunities.font_size=25
+      self.label_immunities.enabled=False
       
       self.label_types.text=f"Type(s) Selected: {self.pokemon_type_1.text}, {self.pokemon_type_2.text}"
       self.label_types.foreground="black"
@@ -205,14 +227,14 @@ class Form1(Form1Template):
       self.label_types.font_size=25
       self.label_types.enabled=False
       
-
       self.add_component((self.label_types))
       self.add_component((self.label_strengths))
       #self.label_strengths.remove_from_parent()
       self.add_component((self.label_weaknesses))    
+      self.add_component((self.label_resistances))
+      self.add_component((self.label_immunities))
       #self.label_weaknesses.remove_from_parent()
       self.add_component(self.lower_card)
-
 
     self.pokemon_type_1.text = ""
     self.pokemon_type_2.text = ""
@@ -276,9 +298,49 @@ class Form1(Form1Template):
                 resistance_immunities.append(typing)
 
         return f"Weaknesses: {', '.join(list((set(overall_weakness)) - set(resistance_immunities)))}"
+  def show_immunities(self, first_type, second_type):
+      if not second_type:
+        monotype = first_type
+        monotype_immunities = self.immunities.get(monotype)
+        return f"Immunities: {', '.join(list(monotype_immunities))}"
+      else:
+        overall_immunities = []
+        
+        dualtype1 = first_type        
+        dualtype2 = second_type
+        
+        dualtype1_immunities = self.immunities.get(dualtype1)
+        dualtype2_immunities = self.immunities.get(dualtype2)
+        
+        for typing in dualtype1_immunities: # loop that adds all immunities from the primary type to the overall immunities list
+            overall_immunities.append(typing)
 
+        for typing in dualtype2_immunities: # loop that adds all immunities from the primary type to the overall immunities list
+            overall_immunities.append(typing)
 
+        return f"Immunities: {', '.join(list((set(overall_immunities))))}"
 
+  def show_resistances(self, first_type, second_type):
+      if not second_type:
+        monotype = first_type
+        monotype_resistances = self.resistances.get(monotype)
+        return f"Resistances: {', '.join(list(monotype_resistances))}"
+      else:
+        overall_resistance = []
+        
+        dualtype1 = first_type        
+        dualtype2 = second_type
+        
+        dualtype1_resistances = self.resistances.get(dualtype1)
+        dualtype2_resistances = self.resistances.get(dualtype2)
+        
+        for typing in dualtype1_resistances: # loop that adds all resistances from the primary type to the overall resistances list
+            overall_resistance.append(typing)
+
+        for typing in dualtype2_resistances: # loop that adds all resistances from the primary type to the overall resistances list
+            overall_resistance.append(typing)
+
+        return f"Resistances: {', '.join(list((set(overall_resistance))))}"
 
 
 
