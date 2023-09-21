@@ -88,4 +88,4 @@ The Anvil reference documentation provides comprehensive information on how to u
 If you want to get to the basics as quickly as possible, each section of this documentation features a [Quick-Start Guide](https://anvil.works/docs/overview/quickstarts?utm_source=github:app_README).
 
 ### issues
-- rock electric matchup data is wrong, double check
+- matchup data may likely still be prone to error, will need to debug.
