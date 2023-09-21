@@ -338,10 +338,10 @@ class Form1(Form1Template):
         dualtype2_weaknesses = self.weakness.get(dualtype2)
         
         for typing in dualtype1_resistances: # loop that adds all resistances from the primary type to the overall resistances list
-            if typing not in dualtype1_weaknesses: overall_resistance.append(typing)
+            if typing not in dualtype2_weaknesses: overall_resistance.append(typing)
 
         for typing in dualtype2_resistances: # loop that adds all resistances from the primary type to the overall resistances list
-            if typing not in dualtype2_weaknesses: overall_resistance.append(typing)
+            if typing not in dualtype1_weaknesses: overall_resistance.append(typing)
 
         return f"Resistances: {', '.join(list((set(overall_resistance))))}"
 
